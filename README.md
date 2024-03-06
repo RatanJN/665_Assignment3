@@ -2,15 +2,17 @@
 | CS-665       | Software Design & Patterns |
 |--------------|----------------------------|
 | Name         | Ratan Jagath Naik          |
-| Date         | 11/05/1997                 |
+| Date         | 03/05/2024                 |
 | Course       | Spring 2024                |
-| Assignment # | 2                          |
+| Assignment # | 3                          |
 
 # Assignment Overview
-Please add a paragraph or two overviewing the objectives of the assignment.
+The objective of this assignment is to build a foundational structure for an "Email Generation" application that can automate the process of creating personalized emails for different customer segments. The assignment challenges students to think about software design and how to effectively manage variations in behavior without the need for constant code changes.
+
+The students are expected to devise a solution that allows the application to easily adjust its output—personalized emails—in response to different customer types, such as Business, Returning, Frequent, New, and VIP. The underlying goal is to enhance the student's understanding of design patterns and their practical applications in solving common software design problems. This will be evidenced by writing unit tests that demonstrate the application’s ability to produce the correct email for each type of customer, thereby reinforcing the importance of test-driven development as a fundamental part of the software engineering process.
 
 # GitHub Repository Link:
-https://github.com/RatanJN/665_Assignment2.git
+https://github.com/RatanJN/665_Assignment3.git
 
 # Implementation Description 
 
@@ -19,11 +21,22 @@ For each assignment, please answer the following:
 
 - Explain the level of flexibility in your implementation, including how new object types can
 be easily added or removed in the future.
+
+ANS: The implementation demonstrates a high level of flexibility through the Strategy Design Pattern, which allows for easy addition or removal of object types. In the context of the email generation system, if a new customer segment needs to be introduced, a developer can simply create a new class that implements the EmailStrategy interface. This new class will encapsulate the email generation logic for the new customer type. Conversely, removing an existing customer type is as simple as deleting a class, with no need to alter any other part of the codebase. This modular approach ensures that the application can adapt quickly to changing requirements without disrupting the existing functionality.
+
 - Discuss the simplicity and understandability of your implementation, ensuring that it is
 easy for others to read and maintain.
+
+ANS: The simplicity and understandability of the implementation are ensured by having each customer segment's email strategy contained within its own class. There is no complex logic determining which email template to use; instead, this is handled through polymorphism where each strategy is an interchangeable object. Furthermore, the context class (ContextEmail) abstracts the strategy execution, providing a simple interface to the rest of the application. This makes the code easy to read and maintain since each part of the system has a well-defined role, and there's a clear flow of control.
+
 - Describe how you have avoided duplicated code and why it is important.
+
+ANS: By leveraging the Strategy Design Pattern, duplicated code is inherently avoided. Since different email generation behaviors are encapsulated within their respective strategy classes, there is no need to repeat logic across the application. This is important not only for reducing the likelihood of bugs but also for minimizing the maintenance overhead. When changes are required, they can be made in a single location rather than in multiple places throughout the code, which reduces the risk of inconsistent behavior and defects.
+
 - If applicable, mention any design patterns you have used and explain why they were
 chosen.
+
+ANS: The Strategy Design Pattern was employed to manage the varying email generation requirements for different customer segments. It was chosen because it provides a means to define a family of algorithms, encapsulate each algorithm, and make them interchangeable at runtime. This pattern is ideal for the application because it aligns with the need for flexibility and maintainability while keeping the codebase organized and ensuring that new types of email strategies can be added without modifying existing classes. It promotes loose coupling and high cohesion, which are hallmarks of a well-architected software application.
 
 
 # Maven Commands
